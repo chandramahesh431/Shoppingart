@@ -140,6 +140,12 @@ const CardItem = () => {
     }
   };
   const handleRemove = (item) => {
+    // alert(item.p_id);
+    console.log(
+      cartItemsData.filter((_item) => {
+        return _item.p_id !== item.p_id;
+      })
+    );
     setCartItemsData(
       JSON.parse(
         JSON.stringify(
@@ -312,7 +318,7 @@ const CardItem = () => {
                   <td style={{ border: "0px" }}>
                     <img
                       style={{ width: 50, height: 50 }}
-                      src={require(`../../images/T${index + 1}.jpg`)}
+                      src={require(`../../images/T${item.p_id}.jpg`)}
                     ></img>
                   </td>
                   <td style={{ border: "0px" }}>
