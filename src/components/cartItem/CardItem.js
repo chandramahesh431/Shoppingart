@@ -71,11 +71,11 @@ const CardItem = () => {
   const items = useSelector((state) => state.cartReducer.items);
   const [cartItemsData, setCartItemsData] = useState(items);
   const [clickedItem, setClickedItem] = useState(null);
-  const handleChange = (event, index) => {
+  const handleChange = (event, id, index) => {
     const _items = JSON.parse(JSON.stringify(cartItemsData));
-    let item = JSON.parse(JSON.stringify(items.find((x) => x.p_id === index)));
+    let item = JSON.parse(JSON.stringify(items.find((x) => x.p_id === id)));
     item["p_quantity"] = event.target.value;
-    _items[index - 1] = item;
+    _items[index] = item;
     console.log(_items);
     setCartItemsData(_items);
   };
@@ -364,7 +364,7 @@ const CardItem = () => {
                   <input
                     style={{ width: "20%" }}
                     type="text"
-                    onChange={(event, index) => handleChange(event, item.p_id)}
+                    onChange={(event) => handleChange(event, item.p_id, index)}
                     value={item.p_quantity}
                   ></input>
                 </td>
